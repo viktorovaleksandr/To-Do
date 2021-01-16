@@ -1,4 +1,4 @@
-function initToDoList() {
+function createToDoList() {
 
 	const buttonAdd = document.querySelector('.btn');
 	const input = document.querySelector('.form-control');
@@ -12,7 +12,8 @@ function initToDoList() {
 		const closeBtn = document.createElement("button");
 		closeBtn.classList.add("btn-close");
 	
-		ul.appendChild(li).append(closeBtn);
+		ul.prepend(li)
+		li.append(closeBtn);
 		input.value = "";
 		onRemoveTask(closeBtn);
 	}
@@ -30,4 +31,4 @@ function initToDoList() {
 	buttonAdd.addEventListener('click', onAddButtonClick);
 }
 
-document.addEventListener("DOMContentLoaded", initToDoList);
+document.addEventListener("DOMContentLoaded", createToDoList);
