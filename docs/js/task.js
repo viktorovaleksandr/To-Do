@@ -1,34 +1,31 @@
-function createToDoList() {
-	const buttonAdd = document.querySelector('.btn');
-	const input = document.querySelector('.form-control');
-	const ul = document.querySelector('ul');
+const addButton = document.querySelector('.btn');
+const input = document.querySelector('.form-control');
+const ul = document.querySelector('ul');
+const emptyLi = document.querySelector('.js-li');
 
-	input.onfocus = function clearInput() {
-  		this.removeAttribute('placeholder');
-	}
-
-	function onAddBtnClick() {
-		const li = document.createElement('li');
-		li.className = 'rounded-pill list-group-item d-flex justify-content-between list-group-item-action';
-		li.textContent = input.value;
-
-		const closeBtn = document.createElement("button");
-		closeBtn.className = "btn-close";
+function onAddBtnTask() {
+	const li = document.createElement('li');
+	li.className = `list-group-item list-group-item-action d-flex justify-content-between rounded-pill`;
+	li.textContent = input.value;
 	
-		ul.prepend(li);
-		li.append(closeBtn);
-		input.value = "";
-
-		onCloseBtnClick(closeBtn);
-	}
-
-	function onCloseBtnClick(button) {
-   	button.addEventListener("click",(e) => {
-      	button.parentElement.remove();
-   	});
-	}
+	const closeButton = document.createElement('button');
+	closeButton.className = 'btn-close';
 	
-	buttonAdd.addEventListener('click', onAddBtnClick);
+	ul.appendChild(li).append(closeButton);
+	input.value = '';
+
+	deleteTask(closeButton);
+	eventAddTask(li);
 }
 
-document.addEventListener("DOMContentLoaded", createToDoList);
+function deleteTask(button) {
+   button.addEventListener('click',() => button.parentElement.remove());
+}
+
+function eventAddTask(list) {
+   if(list.classList.contains('list-group-item')) {
+   	emptyLi.remove();
+   }
+}
+
+addButton.addEventListener('click', onAddBtnTask);
