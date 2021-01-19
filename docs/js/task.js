@@ -1,7 +1,7 @@
 const buttonAdd = document.querySelector('#js-add-todo');
 const input = document.querySelector('.js-input-todo');
-const ul = document.querySelector('.js-ul-list');
-const plugList = document.querySelector('.js-plug-list');
+const ul = document.querySelector('.js-list-todo');
+const plugList = document.querySelector('.js-plug-todo');
 
 function onCreateList() {
 	const li = document.createElement('li');
@@ -9,6 +9,7 @@ function onCreateList() {
 	d-flex justify-content-between rounded-pill`;
 	li.textContent = input.value;
 	ul.append(li);
+	
 	onCreateButtonClose(li);
 	onReplacePlugList(li);
 }
