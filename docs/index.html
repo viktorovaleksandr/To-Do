@@ -4,11 +4,12 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
    <title>To-Do list</title>
 </head>
 <body>
 	<div class="container col-sm-5">
-		<h1 class="display-1 text-center">To-Do List</h1>
+		<h1 class="display-1 text-center">To-Do List<i class="bi bi-pencil"></i></h1>
 		<div class="input-group mb-3 card-header rounded-pill">
   			<input type="text" class="js-input-todo form-control rounded-pill" placeholder="Type new Task..." value="">
   			<div class="input-group-append">
@@ -17,7 +18,7 @@
 		</div>
 		<div class="rounded card-body fst-italic">
 			<ul class="js-list-todo list-group list-unstyled list-group-flush"> 
-				<li class="js-plug-todo text-center">your to-do list is empty...</li>
+				<li class="js-empty-message text-center">your to-do list is empty...</li>
 			</ul>
 		</div>
 	</div>
