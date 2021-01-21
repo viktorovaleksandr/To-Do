@@ -3,7 +3,7 @@ const input = document.querySelector('.js-input-todo');
 const ul = document.querySelector('.js-list-todo');
 const emptyMessage = document.querySelector('.js-empty-message');
 
-function onAddNewTodo() {
+function onAddNewTodo(event) {
 	const li = document.createElement('li');
 	li.className = `list-group-item list-group-item-secondary   
 	list-group-item-action d-flex justify-content-between rounded-pill`;
@@ -27,6 +27,14 @@ function showEmptyMessage() {
 	}  
 }
 
+input.addEventListener('keydown', event => {
+   if(event.keyCode === 13) {
+      onAddNewTodo();
+   }
+});
+
+buttonAdd.addEventListener('click', onAddNewTodo);
+
 ul.addEventListener('click', (event) => {
 	const li = event.target.closest('li');
 	const closeButton = event.target.closest('i');
@@ -41,5 +49,6 @@ ul.addEventListener('click', (event) => {
 	showEmptyMessage();
 });
 
-buttonAdd.addEventListener('click', onAddNewTodo);
+
+
 
