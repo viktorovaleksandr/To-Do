@@ -39,9 +39,7 @@ ulTodo.addEventListener('click', (event) => {
 	task.classList.toggle('list-group-item-info');
 	task.classList.toggle('text-decoration-line-through');
 
-	if (removeButton) {
-		removeButton.parentElement.remove();
-	}
+	removeButton.parentElement.remove();
 	showEmptyMessage();
 });
 
