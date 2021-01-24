@@ -1,33 +1,33 @@
 const buttonAdd = document.querySelector('#js-add-todo');
-const input = document.querySelector('.js-input-todo');
-const ul = document.querySelector('.js-list-todo');
+const inputData = document.querySelector('.js-input-todo');
+const ulTodo = document.querySelector('.js-list-todo');
 const emptyMessage = document.querySelector('.js-empty-message');
 
 function onAddNewTodo(event) {
-	const li = document.createElement('li');
-	li.className = `list-group-item list-group-item-secondary   
+	const list = document.createElement('li');
+	list.className = `list-group-item list-group-item-secondary   
 	list-group-item-action d-flex justify-content-between rounded-pill`;
-	li.textContent = input.value;
-	ul.prepend(li);
-	input.value = '';
+	list.textContent = inputData.value;
+	ulTodo.prepend(list);
+	inputData.value = '';
 
-	createButtonClose(li);
+	createButtonRemove(list);
 	emptyMessage.remove();
 }
 
-function createButtonClose(list) {
+function createButtonRemove(list) {
 	const closeButton = document.createElement('i');
 	closeButton.className = 'bi bi-trash-fill';
 	list.append(closeButton);
 }
 
 function showEmptyMessage() {
-	if (ul.children.length < 1) {
-		ul.append(emptyMessage);
+	if (ulTodo.children.length < 1) {
+		ulTodo.append(emptyMessage);
 	}  
 }
 
-input.addEventListener('keydown', event => {
+inputData.addEventListener('keydown', event => {
    if(event.keyCode === 13) {
       onAddNewTodo();
    }
@@ -35,17 +35,17 @@ input.addEventListener('keydown', event => {
 
 buttonAdd.addEventListener('click', onAddNewTodo);
 
-ul.addEventListener('click', (event) => {
-	const li = event.target.closest('li');
-	const closeButton = event.target.closest('i');
+ulTodo.addEventListener('click', (event) => {
+	const task = event.target.closest('li');
+	const removeButton = event.target.closest('i');
 
-	li.classList.toggle('list-group-item-info');
-	li.classList.toggle('text-decoration-line-through');
+	task.classList.toggle('list-group-item-info');
+	task.classList.toggle('text-decoration-line-through');
 
-	if (closeButton) {
-		closeButton.parentElement.remove();
+	if (removeButton) {
+		removeButton.parentElement.remove();
 	}
-
+	
 	showEmptyMessage();
 });
 
