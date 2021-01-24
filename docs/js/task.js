@@ -9,16 +9,13 @@ function onAddNewTodo(event) {
 	list-group-item-action d-flex justify-content-between rounded-pill`;
 	list.textContent = inputData.value;
 	ulTodo.prepend(list);
-	inputData.value = '';
-
-	createButtonRemove(list);
-	emptyMessage.remove();
-}
-
-function createButtonRemove(list) {
+	
 	const closeButton = document.createElement('i');
 	closeButton.className = 'bi bi-trash-fill';
 	list.append(closeButton);
+
+	inputData.value = '';
+	emptyMessage.remove();
 }
 
 function showEmptyMessage() {
@@ -45,7 +42,6 @@ ulTodo.addEventListener('click', (event) => {
 	if (removeButton) {
 		removeButton.parentElement.remove();
 	}
-	
 	showEmptyMessage();
 });
 
